@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+  <h1>{% block title %}Project{% endblock %}</h1>
+  <!-- url for {{ url_for('project.create') }} -->
+  <!-- {{ g }} -->
+    <a class="action" href="{{ url_for('project.create') }}">New</a>
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ post['name'] }}</h1>
+        </div>
+      </header>
+      <p class="body">{{ post['description'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
